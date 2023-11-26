@@ -14,7 +14,7 @@ class Tabs extends StatefulWidget {
 
 class _TabsState extends State<Tabs> {
   List<Widget> tabs = [
-    const HomeScreen(),
+    const Dashboard(),
     const FavoriteScreen(),
     const AddToCartScreen(),
     const ProfileScreen(),

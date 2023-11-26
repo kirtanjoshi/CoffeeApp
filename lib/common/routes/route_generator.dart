@@ -3,6 +3,7 @@ import 'package:coffee_app/features/screens/auth/signup_screen/signUp_screen.dar
 import 'package:coffee_app/features/screens/bio_screen/fill_up_details.dart';
 import 'package:coffee_app/features/screens/bio_screen/set_location.dart';
 import 'package:coffee_app/features/screens/bio_screen/upload_image.dart';
+import 'package:coffee_app/features/screens/view/dashboard/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,6 +34,11 @@ class RouteGenerator {
       case '/location':
         return GetPageRoute(
           page: () => const LocationScreen(),
+          transition: Transition.cupertino,
+        );
+      case '/dashboard':
+        return GetPageRoute(
+          page: () => const Dashboard(),
           transition: Transition.cupertino,
         );
       default:

@@ -8,10 +8,13 @@ import 'package:coffee_app/features/screens/view/bottom_navgation_bar.dart';
 import 'package:coffee_app/global/constants/app_color.dart';
 import 'package:coffee_app/global/constants/app_image.dart';
 import 'package:coffee_app/global/constants/buton.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RouteGenerator.generateRoute,
-      home: Tabs(),
+      home: OnBoardingScreen(),
     );
   }
 }

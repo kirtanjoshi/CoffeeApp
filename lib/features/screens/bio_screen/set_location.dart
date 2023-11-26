@@ -125,7 +125,9 @@ class _LocationScreenState extends State<LocationScreen> {
                     text: "Save",
                     height: 50,
                     width: 150,
-                    onPress: () {},
+                    onPress: () {
+                      Navigator.of(context).pushNamed("/dashboard");
+                    },
                   ),
                 ),
               ),

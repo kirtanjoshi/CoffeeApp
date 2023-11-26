@@ -1,3 +1,6 @@
+import 'package:coffee_app/data/firebase/intialization.dart';
+import 'package:coffee_app/features/screens/auth/controller/auth_contoller.dart';
+import 'package:coffee_app/global/Utils/utils.dart';
 import 'package:coffee_app/global/constants/app_color.dart';
 import 'package:coffee_app/global/constants/app_image.dart';
 import 'package:coffee_app/global/constants/buton.dart';
@@ -13,6 +16,9 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final controller = Get.put(AuthController());
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,12 +59,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ]),
                 Form(
+                  key: _formKey,
                   child: Column(
                     children: [
                       SizedBox(
                         width: double.infinity,
                         child: TextFormField(
+                          controller: controller.emailController,
                           style: TextStyle(color: AppColor.primaryTextColor),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              Utils.toastMessage("Enter email");
+                            }
+                          },
+                          onFieldSubmitted: (value) {
+                            Utils.fieldFocusChanged(
+                                context,
+                                controller.emailFocusNode.value,
+                                controller.passwordFocusNode.value);
+                          },
                           decoration: InputDecoration(
                               prefixIcon: Icon(Icons.email_outlined),
                               hintText: "Enter email",
@@ -80,7 +99,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         width: double.infinity,
                         child: TextFormField(
+                          controller: controller.passwordController,
                           style: TextStyle(color: AppColor.primaryTextColor),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              Utils.toastMessage("Enter password");
+                            }
+                          },
                           decoration: InputDecoration(
                               prefixIcon: Icon(Icons.password),
                               hintText: "Enter password",
@@ -111,12 +136,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       Gap(20),
-                      CommonButton(
+                      Obx(() => CommonButton(
+                          loading: controller.loading.value,
                           buttonColor: AppColor.buttonColor,
                           text: "Sign Up",
                           height: 50,
                           width: double.infinity,
-                          onPress: () {}),
+                          onPress: () {
+                            if (_formKey.currentState!.validate()) {
+                              controller.signUp();
+                            }
+                          })),
                       Gap(20),
                       Text(
                         "or Continue with",

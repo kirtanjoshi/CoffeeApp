@@ -1,20 +1,20 @@
 import 'package:coffee_app/global/constants/app_color.dart';
 import 'package:coffee_app/global/constants/app_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Dashboard> createState() => _DashboardState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> tabs = [];
-  int currentIndex = 0;
+class _DashboardState extends State<Dashboard> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Location",
+                            "${_auth.currentUser!.displayName}",
                             style: TextStyle(
                               color: Color(0xFFB7B7B7),
                               fontFamily: 'Sora',
