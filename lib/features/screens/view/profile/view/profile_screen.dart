@@ -1,13 +1,20 @@
+import 'package:coffee_app/data/secure%20storage/secure_storage.dart';
 import 'package:coffee_app/features/screens/view/profile/view/edit_screen.dart';
 import 'package:coffee_app/global/constants/app_color.dart';
 import 'package:coffee_app/global/constants/app_image.dart';
-import 'package:coffee_app/global/constants/buton.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  // final storage = Get.put(SecureStorage());
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +35,11 @@ class ProfileScreen extends StatelessWidget {
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.logout_outlined),
-              onPressed: () {},
+              onPressed: () {
+                SecureStorage().delete("email");
+                // storage.deleteSecure("email");
+                // Navigator.of(context).pushNamed("/logout");
+              },
             ),
           ],
           title: const Center(
@@ -63,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const Gap(25),
                     const Text(
-                      "Sanita Queen",
+                      "Sudi Mero Budi ",
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 27,
@@ -71,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const Gap(0),
                     Text(
-                      "Email",
+                      "sudimerobudi@gmail.com",
                       style: TextStyle(
                           fontSize: 14,
                           fontFamily: 'Sora',
@@ -80,7 +91,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const Gap(15),
                     Center(
-                      child: Container(
+                      child: SizedBox(
                         height: 35,
                         width: 147,
                         child: ElevatedButton(

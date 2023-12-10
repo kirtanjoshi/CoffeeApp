@@ -1,6 +1,5 @@
 import 'package:coffee_app/global/constants/app_color.dart';
 import 'package:coffee_app/global/constants/app_image.dart';
-import 'package:coffee_app/global/constants/buton.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -89,7 +88,7 @@ class EditScreen extends StatelessWidget {
                   TextFormField(),
                   const Gap(40),
                   Center(
-                    child: Container(
+                    child: SizedBox(
                       height: 35,
                       width: 147,
                       child: ElevatedButton(

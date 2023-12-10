@@ -48,6 +48,12 @@ dependencies:
   firebase_database: ^10.3.5
   fluttertoast: ^8.2.4
   jwt_decoder: ^2.0.1
+  flutter_secure_storage: ^9.0.0
+  shared_preferences: ^2.2.2
+  cached_network_image: ^3.3.0
+  intl: ^0.18.1
+  input_quantity: ^2.2.0
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:

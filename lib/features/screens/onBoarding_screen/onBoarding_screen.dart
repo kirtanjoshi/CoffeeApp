@@ -65,7 +65,8 @@ class OnBoardingScreen extends StatelessWidget {
                     width: 320,
                     onPress: () {
                       Navigator.of(context).pushNamed('/login');
-                    })
+                    }),
+
               ],
             ),
           ),

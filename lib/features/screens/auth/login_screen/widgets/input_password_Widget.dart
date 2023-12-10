@@ -1,7 +1,9 @@
 import 'package:coffee_app/features/screens/auth/controller/auth_contoller.dart';
+import 'package:coffee_app/features/screens/auth/controller/controller.dart';
 import 'package:coffee_app/global/Utils/utils.dart';
 import 'package:coffee_app/global/constants/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class InputPasswordWidget extends StatelessWidget {
@@ -11,7 +13,7 @@ class InputPasswordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AuthController());
+    final controller = Get.put(Controller());
     return SizedBox(
       width: double.infinity,
       child: TextFormField(
@@ -21,6 +23,7 @@ class InputPasswordWidget extends StatelessWidget {
           if (value!.isEmpty) {
             Utils.toastMessage("Enter password");
           }
+          return null;
         },
         style: TextStyle(color: AppColor.primaryTextColor),
         decoration: InputDecoration(
@@ -31,7 +34,7 @@ class InputPasswordWidget extends StatelessWidget {
             labelStyle: TextStyle(color: AppColor.primaryTextColor),
             border: OutlineInputBorder(
                 borderSide: const BorderSide(color: Color(0x001d1917)),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(12.r)),
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.brown),
             )),

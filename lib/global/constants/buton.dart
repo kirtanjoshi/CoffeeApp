@@ -7,7 +7,7 @@ class CommonButton extends StatelessWidget {
   final double height, width;
   final VoidCallback onPress;
   final Color textColor, buttonColor;
-  CommonButton(
+  const CommonButton(
       {super.key,
       required this.buttonColor,
       this.textColor = Colors.white,
